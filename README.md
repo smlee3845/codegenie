@@ -18,7 +18,7 @@ CodeGenie is a simple yet powerful tool for managing and formatting code styles,
 ### Installation Steps
 1. Clone the CodeGenie repository:
    ```bash
-   git clone https://github.com/your-repo/codegenie.git
+   git clone https://github.com/smlee3845/codegenie.git
    cd codegenie
    ```
 2. Install dependencies:
