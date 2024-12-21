@@ -1,0 +1,14 @@
+name: Feature Request
+description: Suggest a new feature for CodeGenie
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **We appreciate your suggestions to improve CodeGenie!**
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Feature Proposal
+      description: What feature would you like to see? Describe it in detail.
+    validations:
+      required: true
