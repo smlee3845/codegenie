@@ -1,0 +1,24 @@
+name: CodeGenie Code Formatter Check
+
+on: [push, pull_request]
+
+jobs:
+  codegenie-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.8'
+
+      - name: Install Dependencies
+        run: |
+          pip install black
+          # 필요한 다른 의존성 설치
+      
+      - name: Run CodeGenie Formatter Check
+        run: |
+          python codegenie.py format . --check
