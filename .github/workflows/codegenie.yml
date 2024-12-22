@@ -22,3 +22,4 @@ jobs:
       - name: Run CodeGenie Formatter Check
         run: |
           python codegenie.py format . --check
+ 
