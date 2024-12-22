@@ -8,6 +8,9 @@ class CodeGeniePlugin:
     def __init__(self, name= "Defaultplugin"):
         self.name = name
 
+    def run(self):
+        return f"{self.name} plugin is running."
+        
     def execute(self, *args, **kwargs):
         """
         Execute the plugin functionality. To be implemented by subclasses.
