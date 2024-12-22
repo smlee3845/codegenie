@@ -1,3 +1,7 @@
+import os
+from engines.python_formatter import format_python
+from engines.js_formatter import format_js
+
 def format_code(file_path, style_path, check=False):
     """
     Format a Python file based on the given style configuration.
@@ -11,6 +15,14 @@ def format_code(file_path, style_path, check=False):
         FileNotFoundError: If the file or style configuration is not found.
         ValueError: If the JSON style configuration is invalid.
     """
+    ext = os.path.splitext(file_path)[1]
+    if ext == ".py":
+        format_python(file_path, style_path)
+    elif ext in [".js", ".ts"]:
+        format_js(file_path, style_path)
+    else:
+        print(f"Unsupported file type: {ext}")
+        
     if not os.path.isfile(file_path):
         raise FileNotFoundError(f"Error: File {file_path} does not exist.")
 
