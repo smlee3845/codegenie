@@ -1,1 +1,7 @@
+{
+    "indentation": 4,
+    "line_length": 100,
+    "string_quotes": "single",
+    "trailing_commas": true
+}
 
