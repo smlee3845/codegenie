@@ -30,4 +30,4 @@ def generate_style_guide(output_path, style_path):
         print(f"Style guide written to {output_path}")
     except IOError as e:
         print(f"Error: Unable to write style guide: {e}")
-
+ 
