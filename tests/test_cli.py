@@ -13,3 +13,4 @@ def test_cli_style_guide():
         capture_output=True, text=True
     )
     assert "Style guide generated" in result.stdout
+ 
