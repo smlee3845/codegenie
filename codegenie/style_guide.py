@@ -1,4 +1,3 @@
-# style_guide.py
 def generate_style_guide(output_path, style_config):
     """
     Generate a Markdown file describing the code style guide.
