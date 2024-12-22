@@ -12,3 +12,4 @@ body:
       description: What feature would you like to see? Describe it in detail.
     validations:
       required: true
+ 
