@@ -28,7 +28,7 @@ class TestFormatter(unittest.TestCase):
             os.remove(self.file_path)
 
     def test_format_code(self):
-        format_code(self.file_path, self.style_path)
+        format_code(self.file_path, style_config=self.style_data)
         with open(self.file_path, "r") as f:
             content = f.read()
 
@@ -37,5 +37,3 @@ class TestFormatter(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
- 
