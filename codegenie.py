@@ -2,6 +2,7 @@ import argparse
 import json
 import subprocess
 import os
+from utils.style_loader import load_style_config
 
 def format_code(file_path, style_path, check=False):
     """
@@ -11,7 +12,10 @@ def format_code(file_path, style_path, check=False):
     if not os.path.isfile(file_path):
         print(f"Error: File {file_path} does not exist.")
         return
-
+    
+    # Load project-specific or default style config
+    style_config = load_style_config()
+    
     # Load style settings
     with open(style_path, 'r') as f:
         style = json.load(f)
