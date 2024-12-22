@@ -5,7 +5,7 @@ class CodeGeniePlugin:
     """
     Base class for CodeGenie plugins.
     """
-    def __init__(self, name):
+    def __init__(self, name= "Defaultplugin"):
         self.name = name
 
     def execute(self, *args, **kwargs):
