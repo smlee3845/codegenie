@@ -1,6 +1,6 @@
+import os
 import json
 import subprocess
-import os
 
 def format_code(file_path, style_config=None, check=False):
     """
