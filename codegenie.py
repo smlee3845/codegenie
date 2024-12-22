@@ -48,22 +48,21 @@ if __name__ == "__main__":
     format_parser = subparsers.add_parser("format")
     format_parser.add_argument("file", help="Path to the file to format")
     format_parser.add_argument("--style", default="settings/default_style.json", help="Path to style settings")
-
+    format_parser.add_argument("--check", action="store_true", help="Only check if the file matches the style")
+    if args.command == "format":
+     format_code(args.file, args.style, args.check)
+    
     # Style guide command
     guide_parser = subparsers.add_parser("style-guide")
     guide_parser.add_argument("--output", default="style_guide.md", help="Output path for the style guide")
     guide_parser.add_argument("--style", default="settings/default_style.json", help="Path to style settings")
-
+    
     args = parser.parse_args()
     if args.command == "format":
         format_code(args.file, args.style)
     elif args.command == "style-guide":
         generate_style_guide(args.output, args.style)
-# Format command
-format_parser = subparsers.add_parser("format")
-format_parser.add_argument("file", help="Path to the file to format")
-format_parser.add_argument("--style", default="settings/default_style.json", help="Path to style settings")
-format_parser.add_argument("--check", action="store_true", help="Only check if the file matches the style")
+
 
 if args.command == "format":
     format_code(args.file, args.style, args.check)
