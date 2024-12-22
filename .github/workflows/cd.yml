@@ -20,8 +20,8 @@ jobs:
         python-version: "3.x"
     - name: Install dependencies
       run: |
-        pip install -e .
         pip install -r requirements.txt
+        pip install .
     - name: Create directories
       run: |
         mkdir -p tests/test_plugins
