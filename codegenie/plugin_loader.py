@@ -30,4 +30,3 @@ def load_plugins(plugin_directory):
                     plugins.append(attr(attr_name))
 
     return plugins
-
