@@ -37,6 +37,7 @@ class TestStyleGuide(unittest.TestCase):
         self.assertIn("Line length: 100 characters", content)
         self.assertIn("String quotes: Single", content)
         self.assertIn("Trailing commas: Yes", content)
+        
 
 if __name__ == "__main__":
     unittest.main()
