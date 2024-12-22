@@ -17,7 +17,7 @@ jobs:
       - name: Install Dependencies
         run: |
           pip install black
-          # 필요한 다른 의존성 설치
+          
       
       - name: Run CodeGenie Formatter Check
         run: |
