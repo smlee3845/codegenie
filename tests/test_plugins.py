@@ -15,3 +15,4 @@ def test_plugin_execution():
     input_code = "print('Hello, World!')"
     output_code = plugin.process(input_code)
     assert output_code == "# Test Plugin\nprint('Hello, World!')"
+ 
