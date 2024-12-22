@@ -35,25 +35,28 @@ def format_code(file_path, style_path, check=False):
     else:
         print(f"{file_path} formatted successfully.")
 
-def generate_style_guide(output_path, style_path):
+def generate_style_guide(output_path, style_path, example_code=None):
     """
-    Generate a Markdown file describing the code style guide.
+    Generate a Markdown file describing the code style guide with additional rules.
     """
-    # Load style settings
-    with open(style_path, 'r') as f:
-        style = json.load(f)
-    
-    # Generate Markdown content
+    with open(style_path, "r") as file:
+        style = json.load(file)
+
     guide = "# Code Style Guide\n\n"
     guide += f"- **Indentation**: {style['indentation']} spaces\n"
     guide += f"- **Line length**: {style['line_length']} characters\n"
     guide += f"- **String quotes**: {'Double' if style['string_quotes'] == 'double' else 'Single'}\n"
-    guide += f"- **Trailing commas**: {'Yes' if style['trailing_commas'] else 'No'}\n"
+    guide += f"- **Trailing commas**: {'Yes' if style['trailing_commas'] else 'No'}\n\n"
+    guide += f"- **Variable Naming**: {style['variable_naming']}\n"
+    guide += f"- **Function Documentation Style**: {style['function_documentation']}\n\n"
 
-    # Write to output file
-    with open(output_path, 'w') as f:
-        f.write(guide)
-    print(f"Style guide written to {output_path}")
+    if example_code:
+        guide += "## Examples\n\n"
+        for rule, example in style["examples"].items():
+            guide += f"### {rule.replace('_', ' ').capitalize()}\n```python\n{example}\n```\n\n"
+
+    with open(output_path, "w") as file:
+        file.write(guide)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="CodeGenie CLI")
