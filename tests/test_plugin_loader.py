@@ -18,10 +18,15 @@ class SamplePlugin(CodeGeniePlugin):
             )
 
     def tearDown(self):
-        if os.path.exists(self.plugin_dir):
-            for file in os.listdir(self.plugin_dir):
-                os.remove(os.path.join(self.plugin_dir, file))
-            os.rmdir(self.plugin_dir)
+     if os.path.exists(self.plugin_dir):
+        for file in os.listdir(self.plugin_dir):
+            file_path = os.path.join(self.plugin_dir, file)
+            if os.path.isfile(file_path):
+                os.remove(file_path)
+            elif os.path.isdir(file_path):  # __pycache__ 같은 디렉토리 제거
+                os.rmdir(file_path)
+        os.rmdir(self.plugin_dir)
+
 
     def test_plugin_loader(self):
         plugins = load_plugins(self.plugin_dir)
