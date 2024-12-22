@@ -19,3 +19,4 @@ body:
       description: How can we reproduce the issue?
     validations:
       required: true
+ 
