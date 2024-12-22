@@ -22,9 +22,14 @@ jobs:
       run: |
         pip install -e .
         pip install -r requirements.txt
+    - name: Create directories
+      run: |
+        mkdir -p tests/test_plugins
+        mkdir -p settings
     - name: Set PYTHONPATH
       run: |
         echo "PYTHONPATH=$PYTHONPATH:$(pwd)" >> $GITHUB_ENV
     - name: Run tests
       run: |
         pytest tests/
+
