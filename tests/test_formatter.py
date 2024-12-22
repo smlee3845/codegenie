@@ -33,7 +33,7 @@ class TestFormatter(unittest.TestCase):
             content = f.read()
 
         self.assertNotIn("return a + b", content)
-        self.assertIn("return a + b,", content)
+        self.assertIn("return (a + b,)", content)
 
 if __name__ == "__main__":
     unittest.main()
