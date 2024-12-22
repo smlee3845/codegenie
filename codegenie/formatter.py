@@ -41,4 +41,4 @@ def format_code(file_path, style_path, check=False):
             print(f"File {file_path} does not match the style.")
         else:
             print(f"Error while formatting file {file_path}: {e}")
-
+ 
