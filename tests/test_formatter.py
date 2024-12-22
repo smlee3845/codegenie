@@ -12,7 +12,7 @@ class TestFormatter(unittest.TestCase):
             "string_quotes": "double",
             "trailing_commas": True
         }
-        self.sample_code = """def example_function(a, b):\n    return (a + b)\n"""
+        self.sample_code = """def example_function(a, b):\n    return a + b\n"""
 
         os.makedirs("settings", exist_ok=True)
         os.makedirs("tests", exist_ok=True)
@@ -32,8 +32,9 @@ class TestFormatter(unittest.TestCase):
         with open(self.file_path, "r") as f:
             content = f.read()
 
-        self.assertNotIn("return (a + b)", content)
-        self.assertIn("return (a + b,)", content)
+        self.assertNotIn("return a + b", content)
+        self.assertIn("return a + b,", content)
 
 if __name__ == "__main__":
     unittest.main()
+
