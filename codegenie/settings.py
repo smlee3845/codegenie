@@ -38,3 +38,4 @@ if not os.path.isfile(style_path):
     except json.JSONDecodeError:
         raise ValueError("Error: Invalid JSON in default style configuration file.")
 
+ 
