@@ -1,16 +1,18 @@
-# CodeGenie
+# README.md
 
-CodeGenie is a simple yet powerful code style management and formatting tool for developers. It ensures consistent code style for Python projects and supports customizable style rules with plugins and automated workflows.
+## CodeGenie
+
+CodeGenie is a robust, extensible, and developer-friendly code style management and formatting tool. Designed for Python and JavaScript developers, it enforces consistent code styles, generates style guides, and supports customizable rules with plugin functionality.
 
 ---
 
 ## Key Features
 
-- **Code Formatting**: Enforces PEP 8 standards and supports custom style options (JSON-based settings).
-- **Style Guide Generation**: Automatically generates Markdown-based style guides based on your style rules.
-- **Plugin System**: Extend CodeGenie with custom plugins to handle unique formatting or linting needs.
-- **CI/CD Integration**: Includes GitHub Actions workflows for automated testing and deployment.
-- **Simple CLI Interface**: Easy-to-use commands for formatting and style guide generation.
+- **Code Formatting**: Automatically formats Python and JavaScript/TypeScript files according to style rules.
+- **Style Guide Generation**: Creates Markdown-based style guides from your configuration.
+- **Plugin System**: Extend functionality with custom plugins for unique formatting and linting requirements.
+- **CI/CD Integration**: Includes workflows for automated testing and formatting checks.
+- **Simple CLI Interface**: Command-line tools for formatting and generating style guides.
 
 ---
 
@@ -22,14 +24,22 @@ CodeGenie is a simple yet powerful code style management and formatting tool for
 
 ### Installation Steps
 
-1. Clone CodeGenie:
+1. Clone the CodeGenie repository:
    ```bash
-   git clone https://github.com/smlee3845/codegenie.git
+   git clone https://github.com/your-repo/codegenie.git
    cd codegenie
    ```
 2. Install dependencies:
    ```bash
    pip install -r requirements.txt
+   ```
+3. (Optional) Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   # Activate on Windows
+   .\venv\Scripts\activate
+   # Activate on macOS/Linux
+   source venv/bin/activate
    ```
 
 ---
@@ -38,46 +48,47 @@ CodeGenie is a simple yet powerful code style management and formatting tool for
 
 ### 1. Code Formatting
 
-Format Python files using your custom or default style settings:
+Use CodeGenie to format files or check their compliance with style rules.
 
+#### Format Files:
 ```bash
 python codegenie.py format <file_path> [--style <style_file_path>]
 ```
 
 #### Examples:
-
 ```bash
-python codegenie.py format tests/sample_code.py
-python codegenie.py format tests/sample_code.py --style settings/custom_style.json
+python codegenie.py format my_script.py
+python codegenie.py format my_script.py --style settings/custom_style.json
 ```
 
-### 2. Style Guide Generation
+#### Check Style Compliance:
+```bash
+python codegenie.py format <file_path> --check
+```
 
-Generate a Markdown style guide based on the current style settings:
+### 2. Generate a Style Guide
 
+Generate a Markdown file detailing the current style rules.
 ```bash
 python codegenie.py style-guide [--output <output_file>] [--style <style_file_path>]
 ```
 
 #### Examples:
-
 ```bash
 python codegenie.py style-guide
-python codegenie.py style-guide --output my_style_guide.md
+python codegenie.py style-guide --output style_guide.md
 ```
 
-### 3. Plugin Support
+### 3. Plugin Integration
 
-To use a custom plugin, place your plugin files in the `plugins/` directory. CodeGenie will load and apply plugins automatically during formatting.
+To use custom plugins, place them in the `plugins/` directory. CodeGenie will automatically load plugins at runtime.
 
 #### Plugin Example:
-
 ```python
 from codegenie.plugin import CodeGeniePlugin
 
-class MyCustomFormatter(CodeGeniePlugin):
+class MyCustomPlugin(CodeGeniePlugin):
     def process(self, code: str) -> str:
-        # Custom processing logic here
         return code.replace("TODO", "FIXME")
 ```
 
@@ -85,7 +96,7 @@ class MyCustomFormatter(CodeGeniePlugin):
 
 ## Default Style Settings
 
-CodeGenie uses a JSON-based style configuration. Below is the default configuration (`settings/default_style.json`):
+The default style configuration (`settings/default_style.json`) includes:
 
 ```json
 {
@@ -96,55 +107,58 @@ CodeGenie uses a JSON-based style configuration. Below is the default configurat
 }
 ```
 
+### Explanation:
+
 - **indentation**: Number of spaces for indentation.
-- **line\_length**: Maximum allowed line length.
-- **string\_quotes**: Use "double" or 'single' quotes for strings.
-- **trailing\_commas**: Whether to add trailing commas in lists or dicts.
+- **line_length**: Maximum allowed line length.
+- **string_quotes**: Preferred quotes for strings (double or single).
+- **trailing_commas**: Include trailing commas in multi-line structures.
 
 ---
 
-## Continuous Integration / Continuous Deployment (CI/CD)
+## CI/CD Integration
 
-CodeGenie includes a GitHub Actions workflow (`.github/workflows/ci_cd.yml`) for automated testing and deployment:
+CodeGenie includes GitHub Actions workflows for automation:
 
-- **Automatic Testing**: Runs `pytest` on all test files.
-- **Code Quality Checks**: Ensures all Python files adhere to CodeGenie's style rules.
-- **Deployment Pipeline**: Prepares releases automatically.
+1. **`ci.yml`**: Checks code formatting on pull requests.
+2. **`cd.yml`**: Runs tests and prepares releases on merges to `main`.
 
-To enable CI/CD, push your project to GitHub and include the provided workflow file.
+To enable these workflows, copy the YAML files from `.github/workflows/` into your project.
 
 ---
 
 ## Contributing
 
-CodeGenie is an open-source project, and contributions are welcome!
+CodeGenie is open-source and welcomes contributions!
 
-### Contribution Guidelines
+### Contribution Steps:
 
-1. *Fork the repository.*
-2. *Create a new branch for your feature or bug fix.*
-3. *Write tests and ensure all* tests pass.
-4. Submit a pull request.
+1. Fork the repository.
+2. Create a new branch for your feature or fix.
+3. Write tests for your changes.
+4. Run all tests to ensure they pass.
+5. Submit a pull request.
 
-For more details, see [CONTRIBUTING.md](CONTRIBUTING.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
 
 ---
 
 ## License
 
-CodeGenie is distributed under the MIT License. Feel free to use, modify, and share it!
+CodeGenie is licensed under the MIT License. See the LICENSE file for more details.
 
 ---
 
 ## Roadmap
 
-Upcoming features for future versions:
+Planned features for future releases:
 
-- **Enhanced Plugin System**: Support for real-time linting and dynamic plugin loading.
-- **Style Violation Reporting**: Highlight specific violations during formatting.
-- **Community Templates**: Share and use style templates created by the community.
-- **Integration with IDEs**: Provide plugins for popular IDEs like VSCode and PyCharm.
+- Enhanced real-time linting with dynamic plugin loading.
+- Advanced violation reporting with detailed suggestions.
+- Community-shared style templates.
+- IDE plugins for VSCode and PyCharm.
 
-Stay tuned for updates!
+Stay updated with our latest releases and features!
+
 
 
