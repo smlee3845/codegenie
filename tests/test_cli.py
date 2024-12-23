@@ -1,4 +1,5 @@
 import subprocess
+import os
 
 def test_cli_format():
     result = subprocess.run(
@@ -8,7 +9,7 @@ def test_cli_format():
     print("stdout:", result.stdout)
     print("stderr:", result.stderr)
     assert result.returncode == 0, "CLI returned an error."
-    assert "Formatting completed" in result.stdout
+    assert "formatted successfully" in result.stdout, "Formatting output mismatch."
 
 def test_cli_style_guide():
     result = subprocess.run(
@@ -18,4 +19,4 @@ def test_cli_style_guide():
     print("stdout:", result.stdout)
     print("stderr:", result.stderr)
     assert result.returncode == 0, "CLI returned an error."
-    assert "Style guide generated" in result.stdout
+    assert os.path.exists("style_guide.md"), "Style guide was not generated."

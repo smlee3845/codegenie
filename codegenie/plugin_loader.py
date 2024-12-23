@@ -3,6 +3,10 @@ import os
 import importlib.util
 from codegenie.plugin import CodeGeniePlugin
 
+class SamplePlugin(CodeGeniePlugin):
+    def __init__(self, name=None):
+        super().__init__(name=name)
+
 def load_plugins(plugin_directory):
     plugins = []
     for file_name in os.listdir(plugin_directory):

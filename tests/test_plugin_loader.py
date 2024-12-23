@@ -5,18 +5,19 @@ from codegenie.plugin import CodeGeniePlugin
 
 class TestPluginLoader(unittest.TestCase):
     def setUp(self):
-        self.plugin_dir = "tests/test_plugins"
-        os.makedirs(self.plugin_dir, exist_ok=True)
-        with open(f"{self.plugin_dir}/sample_plugin.py", "w") as f:
-            f.write(
-                """
+     self.plugin_dir = "tests/test_plugins"
+     os.makedirs(self.plugin_dir, exist_ok=True)
+     with open(f"{self.plugin_dir}/sample_plugin.py", "w") as f:
+        f.write(
+            """
 from codegenie.plugin import CodeGeniePlugin
 
 class SamplePlugin(CodeGeniePlugin):
-    def __init__(self):
-        super().__init__("SamplePlugin")
-                """
-            )
+    def __init__(self, name=None):
+        super().__init__(name=name)
+"""
+        )
+
 
     def tearDown(self):
      if os.path.exists(self.plugin_dir):

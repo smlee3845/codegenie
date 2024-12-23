@@ -46,7 +46,6 @@ def format_code(file_path, style_path, check=False):
 
 def generate_style_guide(output_path, style_path, example_code=None):
     validate_file(style_path)
-
     with open(style_path, "r") as file:
         style = json.load(file)
 
@@ -55,8 +54,6 @@ def generate_style_guide(output_path, style_path, example_code=None):
     guide += f"- **Line length**: {style.get('line_length', 88)} characters\n"
     guide += f"- **String quotes**: {'Double' if style.get('string_quotes') == 'double' else 'Single'}\n"
     guide += f"- **Trailing commas**: {'Yes' if style.get('trailing_commas') else 'No'}\n\n"
-    guide += f"- **Variable Naming**: {style.get('variable_naming', 'Not specified')}\n"
-    guide += f"- **Function Documentation Style**: {style.get('function_documentation', 'Not specified')}\n\n"
 
     if example_code:
         guide += "## Examples\n\n"
@@ -69,6 +66,7 @@ def generate_style_guide(output_path, style_path, example_code=None):
 
     with open(output_path, "w") as file:
         file.write(guide)
+    print("Style guide generated.")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="CodeGenie CLI")
