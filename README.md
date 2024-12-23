@@ -26,7 +26,7 @@ CodeGenie is a robust, extensible, and developer-friendly code style management 
 
 1. Clone the CodeGenie repository:
    ```bash
-   git clone https://github.com/your-repo/codegenie.git
+   git clone https://github.com/smlee3845/codegenie.git
    cd codegenie
    ```
 2. Install dependencies:
