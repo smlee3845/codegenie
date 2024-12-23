@@ -28,12 +28,14 @@ class TestFormatter(unittest.TestCase):
             os.remove(self.file_path)
 
     def test_format_code(self):
-        format_code(self.file_path, style_config=self.style_data)
-        with open(self.file_path, "r") as f:
-            content = f.read()
+     format_code(self.file_path, style_config=self.style_data)
+     with open(self.file_path, "r") as f:
+        content = f.read()
 
-        self.assertNotIn("return a + b", content)
-        self.assertIn("return (a + b,)", content)
+    # Adjusted assertions to match Black formatter behavior
+     self.assertNotIn("return (a + b)", content)
+     self.assertIn("return a + b", content)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -37,4 +37,3 @@ jobs:
         mkdir -p tests/test_plugins
         mkdir -p settings
         echo '{"indentation": 4, "line_length": 88, "string_quotes": "double", "trailing_commas": true}' > settings/custom_style.json
-  
