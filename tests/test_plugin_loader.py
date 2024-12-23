@@ -1,6 +1,7 @@
 import unittest
 import os
 from codegenie.plugin_loader import load_plugins
+from codegenie.plugin import CodeGeniePlugin
 
 class TestPluginLoader(unittest.TestCase):
     def setUp(self):
@@ -19,18 +20,24 @@ class SamplePlugin(CodeGeniePlugin):
 
     def tearDown(self):
      if os.path.exists(self.plugin_dir):
-        for file in os.listdir(self.plugin_dir):
-            file_path = os.path.join(self.plugin_dir, file)
-            if os.path.isfile(file_path):
-                os.remove(file_path)
-            elif os.path.isdir(file_path):  # __pycache__ 같은 디렉토리 제거
-                os.rmdir(file_path)
+        for root, dirs, files in os.walk(self.plugin_dir, topdown=False):
+            for file in files:
+                os.remove(os.path.join(root, file))
+            for dir in dirs:
+                os.rmdir(os.path.join(root, dir))
         os.rmdir(self.plugin_dir)
-
 
     def test_plugin_loader(self):
         plugins = load_plugins(self.plugin_dir)
         self.assertEqual(len(plugins), 1)  
+
+class SamplePlugin(CodeGeniePlugin):
+    def __init__(self, name):
+        super().__init__(name)
+        self.name = name
+
+    def execute(self, code):
+        return code  
 
 if __name__ == "__main__":
     unittest.main()
