@@ -8,12 +8,11 @@ def validate_file(file_path):
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"File {file_path} not found.")
 
-def format_code(file_path, style_path, check=False):
+def format_code(file_path, style_path, check=False, log=False):
     validate_file(file_path)
     validate_file(style_path)
 
     style_config = load_style_config(style_path)
-
     black_command = ["black", file_path, f"--line-length={style_config.get('line_length', 88)}"]
     if style_config.get("string_quotes") == "double":
         black_command.append("--skip-string-normalization")
@@ -23,10 +22,20 @@ def format_code(file_path, style_path, check=False):
         black_command.append("--check")
 
     try:
-        result = subprocess.run(black_command, check=True)
+        result = subprocess.run(black_command, check=True, text=True, capture_output=True)
+        log_message = f"File {file_path} formatted successfully.\n" if not check else \
+                      f"File {file_path} matches the style.\n"
+        if result.returncode != 0:
+            log_message = f"File {file_path} failed formatting check.\n"
+
+        print(log_message)
+        if log:
+            with open("logs/format_log.txt", "a") as log_file:
+                log_file.write(log_message)
+
     except subprocess.CalledProcessError as e:
         print(f"Error during formatting: {e}")
-        return
+
 
     if check:
         if result.returncode == 0:
