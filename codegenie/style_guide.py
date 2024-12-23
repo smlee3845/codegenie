@@ -1,14 +1,21 @@
+# 수정된 style_guide.py
+import json
+
 def generate_style_guide(output_path, style_config):
     """
     Generate a Markdown file describing the code style guide.
 
     Args:
         output_path (str): Path to save the generated style guide.
-        style_config (dict): Dictionary of style configuration settings.
+        style_config (str | dict): Path to style configuration file or configuration dictionary.
 
     Raises:
         ValueError: If the style configuration is invalid.
     """
+    if isinstance(style_config, str):
+        with open(style_config, "r") as file:
+            style_config = json.load(file)
+
     guide = (
         "# Code Style Guide\n\n"
         f"- **Indentation**: {style_config['indentation']} spaces\n"

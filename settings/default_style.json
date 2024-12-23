@@ -1,27 +1,26 @@
 {
-    "python": {
-     "indentation": 4,
-     "line_length": 88,
-     "string_quotes": "double",
-     "trailing_commas": true,
-     "variable_naming": "snake_case",
-     "function_documentation": "Google",
-     "examples": {
-       "variable_naming": "variable_name = 'value'",
-       "function_documentation": "\"\"\"\nArgs:\n    x (int): The first parameter.\nReturns:\n    int: The result.\n\"\"\""
-    },
-    "javascript": {
-     "indentation": 4,
-     "line_length": 88,
-     "string_quotes": "double",
-     "trailing_commas": true,
-     "variable_naming": "snake_case",
-     "function_documentation": "Google",
-     "examples": {
-       "variable_naming": "variable_name = 'value'",
-       "function_documentation": "\"\"\"\nArgs:\n    x (int): The first parameter.\nReturns:\n    int: The result.\n\"\"\""
-  }
-}
-
+  "python": {
+      "indentation": 4,
+      "line_length": 88,
+      "string_quotes": "double",
+      "trailing_commas": true,
+      "variable_naming": "snake_case",
+      "function_documentation": "Google",
+      "examples": {
+          "variable_naming": "variable_name = 'value'",
+          "function_documentation": "\"\"\"\nArgs:\n    x (int): The first parameter.\nReturns:\n    int: The result.\n\"\"\""
+      }
+  },
+  "javascript": {
+      "indentation": 4,
+      "line_length": 88,
+      "string_quotes": "double",
+      "trailing_commas": true,
+      "variable_naming": "snake_case",
+      "function_documentation": "Google",
+      "examples": {
+          "variable_naming": "variable_name = 'value'",
+          "function_documentation": "\"\"\"\nArgs:\n    x (int): The first parameter.\nReturns:\n    int: The result.\n\"\"\""
+      }
   }
 }

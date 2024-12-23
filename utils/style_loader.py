@@ -1,18 +1,9 @@
-import os
+# codegenie/utils/style_loader.py
 import json
+import os
 
-def load_style_config():
-    """
-    Load the style configuration from the project directory or fallback to default.
-    """
-    project_config = "project_style.json"
-    default_config = "settings/default_style.json"
-    
-    if os.path.isfile(project_config):
-        with open(project_config, "r") as file:
-            return json.load(file)
-    elif os.path.isfile(default_config):
-        with open(default_config, "r") as file:
-            return json.load(file)
-    else:
-        raise FileNotFoundError("No style configuration file found.")
+def load_style_config(style_path):
+    if not os.path.exists(style_path):
+        raise FileNotFoundError(f"Style configuration file {style_path} not found.")
+    with open(style_path, "r") as file:
+        return json.load(file)

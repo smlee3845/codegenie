@@ -8,11 +8,11 @@ class TestFormatter(unittest.TestCase):
         self.style_path = "settings/custom_style.json"
         self.file_path = "tests/sample_code.py"
         self.style_data = {
-            "line_length": 100,
-            "string_quotes": "double",
-            "trailing_commas": True
+         "line_length": 88,
+         "string_quotes": "double",
+         "trailing_commas": True
         }
-        self.sample_code = """def example_function(a, b):\n    return a + b\n"""
+        self.sample_code = """def example_function(a, b):\n    return (a + b)\n"""
 
         os.makedirs("settings", exist_ok=True)
         os.makedirs("tests", exist_ok=True)

@@ -1,6 +1,7 @@
+# 수정된 plugin_loader.py
 import os
 import importlib.util
-from codegenie.plugin import CodeGeniePlugin
+from plugin import CodeGeniePlugin  # 경로 수정
 
 def load_plugins(plugin_directory):
     plugins = []
